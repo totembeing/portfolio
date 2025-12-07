@@ -10,4 +10,5 @@ export default defineConfig({
   },
 
   site: 'https://totembeing.github.io/portfolio',
+  base: '/portfolio',
 });
