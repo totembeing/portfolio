@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+	{
+		title: 'ATS Assistant',
+		description: 'AI-powered keyword generator for resumes using Azure OpenAI with React frontend and Node backend.',
+		link: 'https://github.com/totembeing/ats-assistant',
+		status: 'Complete',
+	},
+	{
+		title: 'Automated Reservation System',
+		description: 'Python automation for meeting room bookings with Excel integration and regex-based parsing.',
+		link: 'https://github.com/totembeing/AutomatedReservationSystem',
+		status: 'In progress – adding web UI',
+	},
+	{
+		title: 'Portfolio',
+		description: 'Astro + Tailwind portfolio with vertical nav, GitHub Pages deploy, and contact mailto form.',
+		link: 'https://github.com/totembeing/portfolio',
+		status: 'Complete',
+	},
+];
+---
+
+<Layout title="Experience">
+	<section class="w-full max-w-3xl space-y-8" id="experience">
+		<header class="space-y-2 text-center">
+			<h1 class="text-3xl lg:text-4xl font-bold text-white">Featured projects</h1>
+		</header>
+
+		<div class="flex flex-col items-center gap-5">
+			<button
+				class="mb-20 mt-20 h-9 w-9 rounded-full border border-white/20 bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition"
+				data-dir="prev"
+				aria-label="Previous project"
+			>
+				▲
+			</button>
+
+			<div class="mb-20 w-full max-w-3xl" role="region" aria-label="Project carousel">
+				{projects.map((project, index) => (
+					<article
+						class="relative rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_8px_30px_rgba(0,0,0,0.35)] transition"
+						role="group"
+						aria-roledescription="slide"
+						data-project-card
+						data-index={index}
+					>
+						<div class="flex items-start justify-between gap-3">
+							<div>
+								<h2 class="text-xl font-semibold text-white">{project.title}</h2>
+								<p class="mt-1 text-sm text-neutral-300">{project.description}</p>
+							</div>
+							<span class="shrink-0 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">{project.status}</span>
+						</div>
+						<div class="mt-3">
+							<a
+								href={project.link}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-sm font-semibold text-white underline decoration-white/30 underline-offset-4 hover:decoration-white"
+							>
+								View on GitHub
+							</a>
+						</div>
+					</article>
+				))}
+			</div>
+
+			<button
+				class="h-9 w-9 rounded-full border border-white/20 bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition"
+				data-dir="next"
+				aria-label="Next project"
+			>
+				▼
+			</button>
+		</div>
+	</section>
+
+	<script>
+		const cards = Array.from(document.querySelectorAll('[data-project-card]'));
+		const buttons = Array.from(document.querySelectorAll('button[data-dir]'));
+		let current = 0;
+
+		const update = () => {
+			cards.forEach((card, i) => {
+				card.style.display = i === current ? 'block' : 'none';
+			});
+		};
+
+		update();
+
+		buttons.forEach((btn) => {
+			btn.addEventListener('click', () => {
+				if (cards.length === 0) return;
+				current = btn.dataset.dir === 'prev'
+					? (current - 1 + cards.length) % cards.length
+					: (current + 1) % cards.length;
+				update();
+			});
+		});
+	</script>
+</Layout>
