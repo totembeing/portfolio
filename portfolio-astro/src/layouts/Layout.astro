@@ -15,13 +15,13 @@ const { title = 'Portfolio' } = Astro.props;
 	</head>
 	<body class="min-h-screen bg-black text-white antialiased">
 		<div class="min-h-screen flex bg-black text-white">
-			<aside class="w-64 bg-black border-r border-white/15 flex flex-col items-start justify-center p-6 gap-8">
+			<aside class="w-64 bg-black border-r border-white/15 flex-1 flex flex-col items-start justify-center p-6 gap-8">
 
-				<div class="flex-1 flex items-center w-full">
+				<div class="flex items-center w-full">
 					<nav class="w-full flex flex-col gap-3 text-sm font-medium text-neutral-300 items-center">
 						<a class="w-full text-center rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="/portfolio/">Home</a>
-						<a class="w-full text-center rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="/portfolio/#projects">Projects</a>
-						<a class="w-full text-center rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="/portfolio/experience">Experience</a>
+						<a class="w-full text-center rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="/portfolio/projects">Projects</a>
+						<a class="w-full text-center rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="/portfolio/#experience">Experience</a>
 						<a class="w-full text-center rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="/portfolio/contact">Contact</a>
 						<a class="w-full text-center rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="https://www.linkedin.com/in/vaibhav-narula-4bb64b28a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 						<a class="w-full text-center rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white" href="https://github.com/totembeing" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -29,7 +29,7 @@ const { title = 'Portfolio' } = Astro.props;
 				</div>
 			</aside>
 
-			<main class="flex-1 p-10 lg:p-16 flex items-center">
+			<main class="flex-5 p-10 lg:p-16 flex items-center">
 				<slot />
 			</main>
 		</div>
